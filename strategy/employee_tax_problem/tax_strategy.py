@@ -1,4 +1,12 @@
+"""
+Essa classe é o "strategy" do padrão Strategy, isto é, ela é responsável por implementar cada algoritmo do cálculo de imposto em uma classe distinta que implementa uma interface ou estende uma classe abstrata.
+"""
+
+
 class TaxStrategy:
+    """
+    Classe Strategy, ela irá definir o padrão para as classes concretas que irão implementar o algoritmo de cálculo de imposto para cada tipo de cargo.
+    """
 
     def calculate_tax(self, salary):
         pass
@@ -11,7 +19,7 @@ class DeveloperTaxStrategy(TaxStrategy):
             print("Salary is greater than 2000, applying 15% tax")
             return salary * 0.85
         else:
-            print("Salary is greater than 2000, applying 10% tax")
+            print("Salary is smaller than 2000, applying 10% tax")
             return salary * 0.9
 
 
@@ -22,7 +30,7 @@ class DBATaxStrategy(TaxStrategy):
             print("Salary is greater than 2000, applying 15% tax")
             return salary * 0.85
         else:
-            print("Salary is greater than 2000, applying 10% tax")
+            print("Salary is smaller than 2000, applying 10% tax")
             return salary * 0.9
 
 
@@ -33,5 +41,5 @@ class ManagerTaxStrategy(TaxStrategy):
             print("Salary is greater than 3500, applying 15% tax")
             return salary * 0.8
         else:
-            print("Salary is greater than 3500, applying 10% tax")
+            print("Salary is smaller than 3500, applying 10% tax")
             return salary * 0.85
