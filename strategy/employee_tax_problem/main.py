@@ -1,24 +1,27 @@
+"""
+Esse arquivo existem com o intuito de centralizar a execução do código, isto é, ele é responsável por capturar as informações do usuário em tempo de execução e executar o algoritmo selecionado.
+"""
 
 
 from employee import Employee
 from tax_strategy import *
 
-# Capturando o cargo do usuário em tempo de execução
+# Capturando informações do usuário em tempo de execução
 role = input("Choose your role: developer, dba or manager: ")
-
-# Capturando o salário do usuário em tempo de execução
 salary = float(input("Enter your salary:"))
 
 # Criando um dicionário com as estratégias de imposto
-tax_strategy = {
+tax_strategy_mapper = {
     "developer": DeveloperTaxStrategy,
     "dba": DBATaxStrategy,
     "manager": ManagerTaxStrategy
 }
 
-choosen_tax = tax_strategy[role]()
+tax_strategy = tax_strategy_mapper[role]()
 
-employee = Employee(choosen_tax)
-salary_after_tax = employee.calculate_tax(salary)
+# Criando o contexto no qual o algoritmo selecionado será executado
+employee = Employee()
+employee.salary = salary
+employee.strategy = tax_strategy
 
-print(f"Salary after tax: {salary_after_tax}")
+print(employee.salary_with_tax())
