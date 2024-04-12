@@ -2,12 +2,13 @@
 Essa classe é o "strategy" do padrão Strategy, isto é, ela é responsável por implementar cada algoritmo do cálculo de imposto em uma classe distinta que implementa uma interface ou estende uma classe abstrata.
 """
 
+from abc import ABC, abstractmethod
 
-class TaxStrategy:
+class TaxStrategy(ABC):
     """
     Classe Strategy, ela irá definir o padrão para as classes concretas que irão implementar o algoritmo de cálculo de imposto para cada tipo de cargo.
     """
-
+    @abstractmethod
     def calculate_tax(self, salary):
         pass
 

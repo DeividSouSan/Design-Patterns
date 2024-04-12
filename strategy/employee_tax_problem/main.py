@@ -10,18 +10,6 @@ from tax_strategy import *
 role = input("Choose your role: developer, dba or manager: ")
 salary = float(input("Enter your salary:"))
 
-# Criando um dicionário com as estratégias de imposto
-tax_strategy_mapper = {
-    "developer": DeveloperTaxStrategy,
-    "dba": DBATaxStrategy,
-    "manager": ManagerTaxStrategy
-}
-
-tax_strategy = tax_strategy_mapper[role]()
-
 # Criando o contexto no qual o algoritmo selecionado será executado
-employee = Employee()
-employee.salary = salary
-employee.strategy = tax_strategy
-
+employee = Employee(role, salary)
 print(employee.salary_with_tax())
