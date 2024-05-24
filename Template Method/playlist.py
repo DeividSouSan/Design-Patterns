@@ -19,7 +19,9 @@ class PlayList:
                 self.ordenador = OrdenadorPorAno
                 
             case ModoDeReproducao.porEstrela:
-                self.ordenador = OrdenadorPorEstrela    
+                self.ordenador = OrdenadorPorEstrela
+            case _:
+                raise Exception("Modo de reprodução inválido.")  
             
         return self.ordenador
     
@@ -33,5 +35,6 @@ class PlayList:
     def mostrar_lista_de_reproducao(self) -> None:
         nova_lista: list[MusicaMP3] = self.ordenador.ordenar_musica(self.musicas)
         
-        for musica in nova_lista:
-            print(f"{musica.nome}, {musica.autor}, {musica.ano}, {musica.estrelas}")
+        print(f"{'POS':^3}º -> {'NOME':^20} | {'AUTOR':^20} | {'ANO':^5} | {'ESTRELAS':^3}")
+        for pos, musica in enumerate(nova_lista):
+            print(f"{f"{pos + 1}":^3}º -> {musica.nome:^20} | {musica.autor:^20} | {musica.ano:^5} | {musica.estrelas:^3}")
