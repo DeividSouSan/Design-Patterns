@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from muscia_mp3 import MusicaMP3
 from typing import override
-
+from copy import copy
 
 class OrdenadorTemplate(ABC):
     @abstractmethod
@@ -10,10 +10,7 @@ class OrdenadorTemplate(ABC):
 
     @classmethod
     def ordenar_musica(cls, lista: list[MusicaMP3]) -> list[MusicaMP3]:
-        nova_lista: list[MusicaMP3] = []
-
-        for musica in lista:
-            nova_lista.append(musica)
+        nova_lista: list[MusicaMP3] = copy(lista) # ou lista[:]
 
         for i in range(len(nova_lista)):
             for j in range(i + 1, len(nova_lista)):
