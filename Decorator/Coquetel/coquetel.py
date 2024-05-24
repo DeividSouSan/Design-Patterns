@@ -3,14 +3,16 @@ from abc import ABC
 
 class Coquetel(ABC):
     def __init__(self, nome: str, preco: float):
-        self.nome: str = nome
-        self.preco: float = preco
+        self._nome: str = nome
+        self._preco: float = preco
 
-    def get_nome(self) -> str:
-        return self.nome
+    @property
+    def nome(self) -> str:
+        return self._nome
 
-    def get_preco(self) -> float:
-        return self.preco
+    @property
+    def preco(self) -> float:
+        return self._preco
 
 
 class Cachaca(Coquetel):
